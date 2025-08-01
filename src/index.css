@@ -68,11 +68,20 @@ button:hover {
 
 .todo-item {
   cursor: pointer;
+  display: flex;
+  margin-top: 0.2em;
 }
 
 .completed {
   text-decoration: line-through;
   opacity: 0.6;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  margin: 0.5em 0;
 }
 
 
