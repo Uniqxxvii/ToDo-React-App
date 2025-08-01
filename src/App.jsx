@@ -5,6 +5,7 @@ import { useState, useEffect, use } from "react";
 function App() {
   const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const storedTodos = localStorage.getItem("todos");
@@ -35,10 +36,22 @@ function App() {
   };
   
   function getFilteredTodos() {
-    if (filter === "active") return todos.filter(todo => !todo.completed);
-    if (filter === "completed") return todos.filter(todo => todo.completed);
-    return todos;
+  let filtered = todos;
+
+  if (filter === "active") {
+    filtered = todos.filter(todo => !todo.completed);
+  } else if (filter === "completed") {
+    filtered = todos.filter(todo => todo.completed);
   }
+
+  if (searchQuery.trim()) {
+    filtered = filtered.filter(todo =>
+      todo.text.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
+
+  return filtered;
+}
 
   return (
       <div>
@@ -63,6 +76,13 @@ function App() {
           >
             Завершенные
           </button> 
+          <input 
+            type="text" 
+            placeholder="Поиск..." 
+            value={searchQuery} 
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="search-input"
+          />
         </div>
         <TodoList todos={getFilteredTodos()} onDelete={handleDeleteTodo} onToggle={handleToggleComplete} />
       </div>
