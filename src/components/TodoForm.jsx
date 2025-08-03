@@ -14,9 +14,15 @@ function TodoForm({ onAddTodo }) {
         }
     }
 
+    function handleKeyDown(event) {
+        if (event.key === "Enter") {
+            handleSubmit();
+        }
+    }
+
     return (
         <div>
-            <input value={inputValue} onChange={handleInputChange} type="text" placeholder="Введите задачу"/>
+            <input value={inputValue} onChange={handleInputChange} onKeyDown={handleKeyDown} type="text" placeholder="Введите задачу"/>
             <button onClick={handleSubmit}>Добавить задачу</button>
         </div>
     )

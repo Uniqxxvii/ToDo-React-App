@@ -61,6 +61,10 @@ function handleEditTodo(index, newText) {
     );
   }
 
+function clearCompletedTodos() {
+    setTodos((prevTodos) => prevTodos.filter(todo => !todo.completed));
+  }
+
   return (
       <div>
         <h1>Мои задачи</h1>
@@ -98,6 +102,11 @@ function handleEditTodo(index, newText) {
           onToggle={handleToggleComplete}
           onEdit={handleEditTodo} 
         />
+        {todos.some(todo => todo.completed) && (
+          <button className="clear-completed" onClick={clearCompletedTodos}>
+            Очистить завершенные
+          </button>
+        )}
       </div>
   );
 };
