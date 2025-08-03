@@ -53,6 +53,14 @@ function App() {
   return filtered;
 }
 
+function handleEditTodo(index, newText) {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo, i) =>
+        i === index ? { ...todo, text: newText } : todo
+      )
+    );
+  }
+
   return (
       <div>
         <h1>Мои задачи</h1>
@@ -84,7 +92,12 @@ function App() {
             className="search-input"
           />
         </div>
-        <TodoList todos={getFilteredTodos()} onDelete={handleDeleteTodo} onToggle={handleToggleComplete} />
+        <TodoList 
+          todos={getFilteredTodos()} 
+          onDelete={handleDeleteTodo} 
+          onToggle={handleToggleComplete}
+          onEdit={handleEditTodo} 
+        />
       </div>
   );
 };
