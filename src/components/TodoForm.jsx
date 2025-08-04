@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function TodoForm({ onAddTodo }) {
+function TodoForm({ onAddTodo, className }) {
     const [inputValue, setInputValue] = useState("");
 
     function handleInputChange(event) {
@@ -21,8 +21,14 @@ function TodoForm({ onAddTodo }) {
     }
 
     return (
-        <div>
-            <input value={inputValue} onChange={handleInputChange} onKeyDown={handleKeyDown} type="text" placeholder="Введите задачу"/>
+        <div className={className}>
+            <input 
+                value={inputValue} 
+                onChange={handleInputChange} 
+                onKeyDown={handleKeyDown} 
+                type="text" 
+                placeholder="Введите задачу"
+            />
             <button onClick={handleSubmit}>Добавить задачу</button>
         </div>
     )

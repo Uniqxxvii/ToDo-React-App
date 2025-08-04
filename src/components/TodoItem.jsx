@@ -26,26 +26,27 @@ function TodoItem({ text, completed, onDelete, onToggle, onEdit }) {
           {text}
         </span>
       )}
+      <div className="edit-delete-buttons">
+        <button
+          className="edit-button"
+          onClick={(e) => {
+            e.stopPropagation(); // чтобы не вызвалось onToggle
+            setIsEditing(true);
+          }}
+        >
+          ✏️
+        </button>
 
-      <button
-        className="edit-button"
-        onClick={(e) => {
-          e.stopPropagation(); // чтобы не вызвалось onToggle
-          setIsEditing(true);
-        }}
-      >
-        ✏️
-      </button>
-
-      <button
-        className="delete-button"
-        onClick={(e) => {
-          e.stopPropagation();
-          onDelete();
-        }}
-      >
-        ✖️
-      </button>
+        <button
+          className="delete-button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete();
+          }}
+        >
+          ✖️
+        </button>
+      </div>
     </li>
   );
 }

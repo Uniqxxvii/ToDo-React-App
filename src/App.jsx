@@ -66,9 +66,9 @@ function clearCompletedTodos() {
   }
 
   return (
-      <div>
+      <div className="container">
         <h1>Мои задачи</h1>
-        <TodoForm onAddTodo={handleAddTodo} />
+        <TodoForm onAddTodo={handleAddTodo} className="todo-form" />
         <div className="filters">
           <button 
             className={filter === "all" ? "active" : ""}
@@ -90,7 +90,7 @@ function clearCompletedTodos() {
           </button> 
           <input 
             type="text" 
-            placeholder="Поиск..." 
+            placeholder="Поиск" 
             value={searchQuery} 
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
@@ -100,12 +100,15 @@ function clearCompletedTodos() {
           todos={getFilteredTodos()} 
           onDelete={handleDeleteTodo} 
           onToggle={handleToggleComplete}
-          onEdit={handleEditTodo} 
+          onEdit={handleEditTodo}
+          className="todo-list" 
         />
         {todos.some(todo => todo.completed) && (
-          <button className="clear-completed" onClick={clearCompletedTodos}>
-            Очистить завершенные
-          </button>
+          <div className="completed-button">
+            <button className="clear-completed" onClick={clearCompletedTodos}>
+              Очистить завершенные
+            </button>
+          </div>
         )}
       </div>
   );
