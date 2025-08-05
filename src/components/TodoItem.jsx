@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 function TodoItem({ text, completed, onDelete, onToggle, onEdit }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editText, setEditText] = useState(text);
+  const [isEditing, setIsEditing] = useState(false); // Состояние для отслеживания режима редактирования
+  const [editText, setEditText] = useState(text); // Состояние для хранения текста при редактировании
     return (
     <li className={completed ? "completed todo-item" : "todo-item"}>
       {isEditing ? (
@@ -12,15 +12,15 @@ function TodoItem({ text, completed, onDelete, onToggle, onEdit }) {
           onBlur={() => {
             setIsEditing(false);
             onEdit(editText);
-          }}
+          }} // Сохраняет изменения при потере фокуса
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               setIsEditing(false);
               onEdit(editText);
             }
-          }}
+          }} // Позволяет сохранить изменения по нажатию Enter
           autoFocus
-        />
+        /> // Поле ввода для редактирования текста задачи
       ) : (
         <span className="todo-text" onClick={onToggle}>
           {text}

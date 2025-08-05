@@ -3,29 +3,29 @@ import TodoList from "./components/TodoList";
 import { useState, useEffect, use } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [filter, setFilter] = useState("all");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [todos, setTodos] = useState([]); // Хранит список задач
+  const [filter, setFilter] = useState("all"); // Хранит текущий фильтр задач (все, активные, завершенные)
+  const [searchQuery, setSearchQuery] = useState(""); // Хранит текст из поля поиска
 
-  useEffect(() => {
-    const storedTodos = localStorage.getItem("todos");
+  useEffect(() => {                                                                        
+    const storedTodos = localStorage.getItem("todos"); 
     if (storedTodos) {
       setTodos(JSON.parse(storedTodos));
     }
-  }, []);
+  }, []); // При загрузке страницы получаем задачи из localStorage и записываем в todos
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }
-  , [todos]);
+  , [todos]); // Каждый раз когда задачи меняются сохраняем их в localStorage
 
   function handleAddTodo(newTodo) {
     setTodos((prevTodos) => [...prevTodos, { text: newTodo, completed: false }]);
-  };
+  }; // Добавляет новую задачу
 
   function handleDeleteTodo(index) {
     setTodos((prevTodos) => prevTodos.filter((_, i) => i !== index));
-  };
+  }; // Удаляет задачу по индексу
 
   function handleToggleComplete(index) {
     setTodos((prevTodos) =>
@@ -33,7 +33,7 @@ function App() {
         i === index ? { ...todo, completed: !todo.completed } : todo
       )
     );
-  };
+  }; // Переключает состояние завершенности задачи по индексу (зачеркнут/не зачернут)
   
   function getFilteredTodos() {
   let filtered = todos;
@@ -51,7 +51,7 @@ function App() {
   }
 
   return filtered;
-}
+} // Фильтрует задачи по выбранному фильтру и поисковому запросу
 
 function handleEditTodo(index, newText) {
     setTodos((prevTodos) =>
@@ -59,11 +59,11 @@ function handleEditTodo(index, newText) {
         i === index ? { ...todo, text: newText } : todo
       )
     );
-  }
+  } // Редактирует текст задачи по индексу
 
 function clearCompletedTodos() {
     setTodos((prevTodos) => prevTodos.filter(todo => !todo.completed));
-  }
+  } // Очищает все завершенные задачи
 
   return (
       <div className="container">

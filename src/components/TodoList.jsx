@@ -4,7 +4,7 @@ function TodoList({ todos, onDelete, onToggle, onEdit, className }) {
   return (
     <div className={className}>
       <ul>
-        {todos.map((todo, index) => (
+        {todos.map((todo, index) => ( // Проходим по каждому элементу массива todos и создаем TodoItem
           <TodoItem 
               key={index} 
               text={todo.text}
