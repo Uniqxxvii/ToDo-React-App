@@ -1,5 +1,5 @@
 # ToDo React App
-- Пет проект.
+- Пет проект
 
 # Демо
 - [Live Demo Netlify](https://uniqxxvii-todoreactapp.netlify.app/)
