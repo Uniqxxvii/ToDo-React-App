@@ -1,9 +1,25 @@
 # ToDo React App
-- Мини-приложение для создания списка задач. Пользователь может добавлять, удалять и отмечать задачи как выполненные. Данные сохраняются в localStorage.
+- Пет проект.
+
+# Демо
+- [Live Demo Netlify](https://uniqxxvii-todoreactapp.netlify.app/)
+
+# Функционал
+- Добавление задач
+- Удаление задач
+- Редактирование задач
+- Фильтр задач
+- Пометка задач как выполненных
+
+# Технологии
+- React
+- Vite
+- CSS
+- localStorage
 
 # Запуск проекта
 - npm install
 - npm run dev
 
-# Демо
-- [Live Demo Netlify](https://uniqxxvii-todoreactapp.netlify.app/)
+# Скриншот
+![Todo-app-screenshot](./public/screenshot.png)
